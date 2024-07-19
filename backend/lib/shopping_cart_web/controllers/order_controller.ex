@@ -20,7 +20,7 @@ defmodule ShoppingCartWeb.OrderController do
          {:ok, %Order{} = order} <- Orders.create_order(order_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", ~p"/api/orders")
+      |> put_resp_header("location", ~p"/api/order")
       |> render(:show, order: order)
     end
   end
