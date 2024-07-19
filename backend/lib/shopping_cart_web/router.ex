@@ -25,7 +25,7 @@ defmodule ShoppingCartWeb.Router do
     get "/product/:id", ProductController, :show
     put "/product/:id",ProductController, :update
     put "/product/order/:id", ProductController, :order
-    post "/orders",OrderController,:create
+    post "/order",OrderController,:create
   end
 end
   #  get "/users", UserController, :index
