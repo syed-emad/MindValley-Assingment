@@ -1,6 +1,11 @@
 defmodule ShoppingCartWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :shopping_cart
-
+  # import Plug.CORS
+  # plug CORS,
+  #   origin: "*",
+  #   methods: [:get, :post, :put, :patch, :delete, :options],
+  #   headers: ["authorization", "content-type", "x-requested-with"],
+  #   max_age: 86400  # Cache CORS preflight requests for 1 d
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
@@ -44,4 +49,5 @@ defmodule ShoppingCartWeb.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
   plug ShoppingCartWeb.Router
+
 end
