@@ -19,7 +19,6 @@ defmodule ShoppingCartWeb.Router do
   # end
   scope "/api", ShoppingCartWeb do
     pipe_through :api
-    get "/",DefaultController,:index
     get "/products", ProductController, :index
     get "/product/:id", ProductController, :show
     post "/products", ProductController, :create
