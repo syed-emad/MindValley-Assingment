@@ -21,10 +21,8 @@ defmodule ShoppingCartWeb.Router do
     pipe_through :api
     get "/",DefaultController,:index
     get "/products", ProductController, :index
-    post "/products", ProductController, :create
     get "/product/:id", ProductController, :show
-    put "/product/:id",ProductController, :update
-    put "/product/order/:id", ProductController, :order
+    post "/products", ProductController, :create
     post "/order",OrderController,:create
   end
 end
