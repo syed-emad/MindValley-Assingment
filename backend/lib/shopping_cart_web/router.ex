@@ -5,6 +5,18 @@ defmodule ShoppingCartWeb.Router do
     plug :accepts, ["json"]
   end
 
+
+  # def create(conn, %{"order" => order_params}) do
+  #   product = Products.get_product!(order_params.product_id)
+
+  #   with {:ok, %Orders.Order{} = order} <- Orders.create_order(order_params),
+  #        {:ok, _} <- Products.order_product(product) do
+  #     conn
+  #     |> put_status(:created)
+  #     |> put_resp_header("location", Routes.order_path(conn, :show, order))
+  #     |> render(:show, order: order)
+  #   end
+  # end
   scope "/api", ShoppingCartWeb do
     pipe_through :api
     get "/",DefaultController,:index
@@ -13,6 +25,7 @@ defmodule ShoppingCartWeb.Router do
     get "/product/:id", ProductController, :show
     put "/product/:id",ProductController, :update
     put "/product/order/:id", ProductController, :order
+    post "/orders",OrderController,:create
   end
 end
   #  get "/users", UserController, :index

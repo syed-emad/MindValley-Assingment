@@ -15,7 +15,6 @@ defmodule ShoppingCartWeb.ProductController do
     with {:ok, %Product{} = product} <- Products.create_product(product_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", ~p"/api/products/#{product}")
       |> render(:show, product: product)
     end
   end
