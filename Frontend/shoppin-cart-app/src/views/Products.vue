@@ -1,12 +1,11 @@
 <template>
-  <div class="space-y-10 px-10 py-5">
-    <div class="flex w-full justify-between">
-      <h1 class="text-4xl font-bold">Products</h1>
-
+  <div class="space-y-10 px-10">
+    <div class="flex px-10 py-2 w-full justify-end items-center">
       <router-link :to="'/cart'">
-        <h1 class="font-bold">Cart</h1>
+        <img src="../assets/bag.png" class="h-10 w-10 cursor-pointer" />
       </router-link>
     </div>
+    <h1 class="text-4xl font-bold">Products</h1>
     <div
       class="mt-5 grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5"
     >
