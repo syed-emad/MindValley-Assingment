@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="'/product/' + product.id">
+  <router-link :to="'/detail/' + product.id">
     <div id="product-item" class="h-80 w-full">
       <div
         id="image-area"
