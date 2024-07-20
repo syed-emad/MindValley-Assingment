@@ -18,13 +18,32 @@ const store = createStore({
       console.log("state", this.count);
     },
     addToCart(state, product) {
-      state.cart.push(product);
+      let cartItem = state.cart.find((item) => item.id === product.id);
+      console.log("CartItem", product);
+      if (cartItem) {
+        console.log("here");
+        cartItem.orderQuantity += product.orderQuantity;
+      } else {
+        console.log("else");
+        state.cart.push({
+          ...product,
+        });
+      }
       console.log("state", this.cart);
     },
   },
   getters: {
     getCartItems(state) {
       return state.cart;
+    },
+    cartTotal: (state) => {
+      const total2 = state.cart.reduce((total, product) => {
+        const price = parseFloat(product.price);
+        console.log("price", price, product.quantity, total);
+        return total + price * product.orderQuantity;
+      }, 0);
+      console.log("total", total2);
+      return total2;
     },
   },
 });
