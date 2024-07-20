@@ -10,8 +10,8 @@
     <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
       Shopping Cart
     </h1>
-    <div class="w-full flex">
-      <div class="w-3/5 space-y-5">
+    <div class="w-full flex flex-col md:flex-row space-y-5 md:space-y-0">
+      <div class="w-full md:w-3/5 space-y-5">
         <input
           v-model="userEmail"
           type="email"
@@ -20,8 +20,8 @@
         />
         <cart-item v-for="item in cart" :key="item.id" :item="item" />
       </div>
-      <div class="w-2/5 flex justify-center">
-        <div class="w-3/4 h-80 bg-gray-50 rounded-lg p-5 space-y-5">
+      <div class="w-full md:w-2/5 flex justify-center">
+        <div class="w-full md:w-3/4 h-80 bg-gray-50 rounded-lg p-5 space-y-5">
           <h2 id="summary-heading" class="text-lg font-medium text-gray-900">
             Order summary
           </h2>

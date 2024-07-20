@@ -9,9 +9,11 @@
       <img src="../assets/bag.png" class="h-10 w-10 cursor-pointer" />
     </router-link>
   </div>
-  <div class="w-full flex lg:h-screen px-10">
-    <div class="w-1/2 flex items-center">
-      <div class="space-y-5">
+  <div
+    class="w-full flex flex-col md:flex-row lg:h-screen px-10 space-y-5 md:space-y-0"
+  >
+    <div class="w-full md:w-1/2 flex items-center">
+      <div class="space-y-5 w-full">
         <h1 class="text-3xl font-bold text-gray-900 sm:text-4xl">
           {{ product.name }}
         </h1>
@@ -57,7 +59,7 @@
         </p>
       </div>
     </div>
-    <div class="w-1/2">
+    <div class="w-full md:w-1/2 p-10">
       <img :src="product.image_url" class="w-full h-full object-contain" />
     </div>
   </div>
