@@ -5,7 +5,7 @@
     </h1>
     <div class="w-full flex">
       <div class="w-3/5 space-y-5">
-        <cart-item />
+        <cart-item v-for="item in cart" :key="item.id" :item="item" />
       </div>
       <div class="w-2/5 flex justify-center">
         <div class="w-3/4 h-80 bg-gray-50 rounded-lg p-5 space-y-5">
@@ -46,9 +46,14 @@
 </template>
 <script>
 import CartItem from "../components/CartItem.vue";
+import { mapState, mapActions, mapGetters } from "vuex";
+
 export default {
   components: {
     CartItem,
+  },
+  computed: {
+    ...mapState(["cart"]),
   },
 };
 </script>

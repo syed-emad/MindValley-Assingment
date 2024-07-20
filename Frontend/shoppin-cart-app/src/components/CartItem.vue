@@ -6,9 +6,19 @@
         class="object-contain"
       />
       <div class="flex flex-col">
-        <p class="text-md font-medium text-gray-600">Basic Tee</p>
-        <p class="text-md font-medium">$32.00</p>
+        <p class="text-md font-medium text-gray-600">{{ item.name }}</p>
+        <p class="text-md font-medium">{{ item.price }}$</p>
       </div>
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    item: {
+      type: Object,
+      required: true,
+    },
+  },
+};
+</script>

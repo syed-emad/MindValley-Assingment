@@ -2,7 +2,7 @@
 import "./style.css";
 // import App from "./App.vue";
 import router from "./routes/router";
-import { createApp } from "vue";
+import { computed, createApp } from "vue";
 import { createStore } from "vuex";
 import App from "./App.vue";
 const store = createStore({
@@ -20,6 +20,11 @@ const store = createStore({
     addToCart(state, product) {
       state.cart.push(product);
       console.log("state", this.cart);
+    },
+  },
+  getters: {
+    getCartItems(state) {
+      return state.cart;
     },
   },
 });
