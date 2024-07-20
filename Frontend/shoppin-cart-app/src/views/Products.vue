@@ -1,6 +1,12 @@
 <template>
   <div class="space-y-10 px-10 py-5">
-    <h1 class="text-4xl font-bold">Products</h1>
+    <div class="flex w-full justify-between">
+      <h1 class="text-4xl font-bold">Products</h1>
+
+      <router-link :to="'/cart'">
+        <h1 class="font-bold">Cart</h1>
+      </router-link>
+    </div>
     <div
       class="mt-5 grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5"
     >
