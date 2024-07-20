@@ -8,6 +8,7 @@
       <div class="flex flex-col">
         <p class="text-md font-medium text-gray-600">{{ item.name }}</p>
         <p class="text-md font-medium">{{ item.price }}$</p>
+        <p class="text-md font-medium">Quantity: {{ item.orderQuantity }}</p>
       </div>
     </div>
   </div>
