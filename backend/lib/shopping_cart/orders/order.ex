@@ -7,14 +7,14 @@ defmodule ShoppingCart.Orders.Order do
     field :price, :decimal
     field :total_price, :decimal
     field :product_id, :id
-
+    field :cart_id, :id
     timestamps(type: :utc_datetime)
   end
 
   @doc false
   def changeset(order, attrs) do
     order
-    |> cast(attrs, [:quantity, :price, :total_price,:product_id])
+    |> cast(attrs, [:quantity, :price, :total_price,:product_id,:cart_id])
     |> validate_required([:quantity, :price, :total_price])
   end
 end

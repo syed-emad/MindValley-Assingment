@@ -7,7 +7,7 @@ defmodule ShoppingCart.Repo.Migrations.CreateOrders do
       add :price, :decimal
       add :total_price, :decimal
       add :product_id, references(:products, on_delete: :nothing)
-
+      add :cart_id, references(:carts, on_delete: :nothing)
       timestamps(type: :utc_datetime)
     end
 

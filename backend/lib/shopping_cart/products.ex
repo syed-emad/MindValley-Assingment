@@ -80,6 +80,16 @@ defmodule ShoppingCart.Products do
     |> Product.changeset(%{quantity: new_quantity})
     |> Repo.update()
   end
+
+  def order_product2(productId) do
+    product = get_product!(productId)
+    new_quantity = product.quantity-1
+
+    product
+    |> Product.changeset(%{quantity: new_quantity})
+    |> Repo.update()
+  end
+
   @doc """
   Deletes a product.
 
