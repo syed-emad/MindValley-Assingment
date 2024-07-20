@@ -81,9 +81,9 @@ defmodule ShoppingCart.Products do
     |> Repo.update()
   end
 
-  def order_product2(productId) do
+  def order_product2(productId,quantity) do
     product = get_product!(productId)
-    new_quantity = product.quantity-1
+    new_quantity = product.quantity-quantity
 
     product
     |> Product.changeset(%{quantity: new_quantity})

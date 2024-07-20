@@ -48,6 +48,15 @@ defmodule ShoppingCartWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+  plug CORSPlug
   plug ShoppingCartWeb.Router
-
+  plug Corsica,
+    origins: [
+      "http://localhost:4000",
+      "http://localhost:5173",
+      "http://localhost:3000"
+    ],
+    allow_headers: ["accept", "content-type", "authorization"],
+    allow_credentials: true,
+    log: [rejected: :error, invalid: :warn, accepted: :debug]
 end

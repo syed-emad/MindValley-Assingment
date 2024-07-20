@@ -9,7 +9,12 @@
       </div>
       <div id="detail-area" class="h-1/4 py-2">
         <div class="flex justify-between">
-          <p class="text-sm font-medium text-gray-600">{{ product.name }}</p>
+          <div class="flex flex-col">
+            <p class="text-sm font-medium text-gray-600">{{ product.name }}</p>
+            <p class="text-sm font-medium text-gray-600">
+              {{ product.quantity }}
+            </p>
+          </div>
           <p class="text-sm font-medium">{{ product.price }}</p>
         </div>
       </div>

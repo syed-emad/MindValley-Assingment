@@ -2,7 +2,7 @@ defmodule ShoppingCartWeb.Router do
   use ShoppingCartWeb, :router
 
   pipeline :api do
-    plug CORSPlug, origin: "*"
+    plug CORSPlug, origin: "*",credentials: true
     plug :accepts, ["json"]
   end
 

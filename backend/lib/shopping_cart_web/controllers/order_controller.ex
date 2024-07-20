@@ -14,8 +14,9 @@ defmodule ShoppingCartWeb.OrderController do
 
   def create(conn, %{"order" => order_params}) do
     items = order_params["items"]
+    # IO.inspect(items, label: "Items")
     Enum.each(items,fn product ->
-      Products.order_product2(product["product_id"])
+      Products.order_product2(product["product_id"],product["orderQuantity"])
     end)
     userEmail = order_params["userEmail"]
     totalAmount = order_params["orderAmount"]

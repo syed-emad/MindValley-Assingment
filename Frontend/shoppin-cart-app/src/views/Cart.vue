@@ -12,6 +12,12 @@
     </h1>
     <div class="w-full flex">
       <div class="w-3/5 space-y-5">
+        <input
+          v-model="userEmail"
+          type="email"
+          placeholder="Enter your email"
+          class="w-full px-4 py-2 rounded-md border-2"
+        />
         <cart-item v-for="item in cart" :key="item.id" :item="item" />
       </div>
       <div class="w-2/5 flex justify-center">
@@ -36,17 +42,7 @@
             </dd>
           </div>
           <button
-            @click="
-              addToCart({
-                id: 3,
-                name: 'Product A',
-                description: 'hello',
-                image_url:
-                  'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-                price: '10.99',
-                quantity: 1,
-              })
-            "
+            @click="submitOrder()"
             type="submit"
             class="flex w-full px-8 py-3 items-center justify-center rounded-md bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700"
           >
@@ -60,12 +56,16 @@
 <script>
 import CartItem from "../components/CartItem.vue";
 import { mapState, mapGetters } from "vuex";
-
+import axios from "axios";
+const axiosInstance = axios.create({
+  baseURL: "http://localhost:4000/api/", // Adjust base URL as per your backend
+});
 export default {
   data() {
     return {
       finalBill: 0,
       deliveryFee: 0,
+      userEmail: "",
     };
   },
   mounted() {
@@ -81,6 +81,34 @@ export default {
   methods: {
     goBack() {
       this.$router.go(-1);
+    },
+    async submitOrder() {
+      let payload = {
+        items: this.cart.map((item) => {
+          return {
+            orderQuantity: item.orderQuantity,
+            price: parseFloat(item.price),
+            product_id: item.id,
+          };
+        }),
+        orderAmount: this.finalBill,
+        userEmail: "this.userEmail",
+      };
+
+      try {
+        const response = await axios.post("http://localhost:4000/api/order", {
+          order: payload,
+        });
+        if (response.status === 201) {
+          // Redirect to a new page
+          this.$router.push("/success");
+        } else {
+          console.error("Failed to submit order.");
+        }
+        console.log("Response:", response.data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
     },
   },
 };
