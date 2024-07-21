@@ -57,9 +57,7 @@
 import CartItem from "../components/CartItem.vue";
 import { mapState, mapGetters } from "vuex";
 import axios from "axios";
-const axiosInstance = axios.create({
-  baseURL: "http://localhost:4000/api/", // Adjust base URL as per your backend
-});
+
 export default {
   data() {
     return {
@@ -92,7 +90,7 @@ export default {
           };
         }),
         orderAmount: this.finalBill,
-        userEmail: "this.userEmail",
+        userEmail: this.userEmail,
       };
 
       try {
