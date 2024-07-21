@@ -6,6 +6,7 @@
       </router-link>
     </div>
     <h1 class="text-4xl font-bold">Products</h1>
+    <p class="text-red-500 mt-4">{{ errorMessage }}</p>
     <div
       class="mt-5 grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5"
     >
@@ -28,6 +29,7 @@ export default {
   data() {
     return {
       products: [],
+      errorMessage: "",
     };
   },
   mounted() {
@@ -38,7 +40,10 @@ export default {
       fetch("http://localhost:4000/api/products")
         .then((res) => res.json())
         .then((data) => (this.products = data.data))
-        .catch((err) => console.log(err.message));
+        .catch((err) => {
+          this.errorMessage = err.message;
+          console.log(err.message);
+        });
     },
   },
 };

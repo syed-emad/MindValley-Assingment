@@ -19,7 +19,11 @@ defmodule ShoppingCartWeb.CartJSON do
     %{
       id: cart.id,
       userEmail: cart.userEmail,
-      totalAmount: cart.totalAmount
+      totalAmount: cart.totalAmount,
+      name: cart.name,
+      address: cart.address,
+      city: cart.city,
+      country: cart.country
     }
   end
 end

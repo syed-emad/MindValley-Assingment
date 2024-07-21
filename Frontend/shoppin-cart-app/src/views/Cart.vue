@@ -12,19 +12,56 @@
     </h1>
     <div class="w-full flex flex-col md:flex-row space-y-5 md:space-y-0">
       <div class="w-full md:w-3/5 space-y-5">
+        <h2 class="text-lg font-medium text-gray-900">Contact Information</h2>
+        <p class="block text-sm font-medium text-gray-700">Email address</p>
         <input
           v-model="userEmail"
           type="email"
           placeholder="Enter your email"
-          class="w-full px-4 py-2 rounded-md border-2"
+          class="w-3/5 px-4 py-2 rounded-md border-2"
         />
-        <cart-item v-for="item in cart" :key="item.id" :item="item" />
+        <h2 class="text-lg font-medium text-gray-900">Shipping Address</h2>
+        <p class="block text-sm font-medium text-gray-700">Name</p>
+        <input
+          v-model="name"
+          type="string"
+          placeholder="Enter your full name"
+          class="w-3/5 px-4 py-2 rounded-md border-2"
+        />
+
+        <p class="block text-sm font-medium text-gray-700">Address</p>
+        <input
+          v-model="address"
+          type="string"
+          placeholder="Enter Address"
+          class="w-3/5 px-4 py-2 rounded-md border-2"
+        />
+
+        <p class="block text-sm font-medium text-gray-700">City</p>
+        <input
+          v-model="city"
+          type="string"
+          placeholder="Enter City"
+          class="w-3/5 px-4 py-2 rounded-md border-2"
+        />
+
+        <p class="block text-sm font-medium text-gray-700">Country</p>
+        <input
+          v-model="country"
+          type="string"
+          placeholder="Enter Country"
+          class="w-3/5 px-4 py-2 rounded-md border-2"
+        />
+        <p class="text-red-500">
+          {{ errorMessage }}
+        </p>
       </div>
       <div class="w-full md:w-2/5 flex justify-center">
-        <div class="w-full md:w-3/4 h-80 bg-gray-50 rounded-lg p-5 space-y-5">
+        <div class="w-full md:w-3/4 rounded-lg p-5 space-y-5">
           <h2 id="summary-heading" class="text-lg font-medium text-gray-900">
             Order summary
           </h2>
+          <cart-item v-for="item in cart" :key="item.id" :item="item" />
           <div class="flex items-center justify-between">
             <p class="text-sm text-gray-600">Total</p>
             <p class="text-sm font-medium text-gray-900">${{ cartTotal }}</p>
@@ -44,9 +81,13 @@
           <button
             @click="submitOrder()"
             type="submit"
-            class="flex w-full px-8 py-3 items-center justify-center rounded-md bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700"
+            :class="{
+              'bg-indigo-600 hover:bg-indigo-700': cart.length > 0,
+              'bg-gray-300 cursor-not-allowed': cart.length === 0,
+            }"
+            class="flex w-full px-8 py-3 items-center justify-center rounded-md text-base font-medium text-white"
           >
-            Add to cart
+            Order Now
           </button>
         </div>
       </div>
@@ -57,6 +98,7 @@
 import CartItem from "../components/CartItem.vue";
 import { mapState, mapGetters } from "vuex";
 import axios from "axios";
+import { errorMessages } from "vue/compiler-sfc";
 
 export default {
   data() {
@@ -64,10 +106,16 @@ export default {
       finalBill: 0,
       deliveryFee: 0,
       userEmail: "",
+      address: "",
+      city: "",
+      name: "",
+      country: "",
+      errorMessage: "",
     };
   },
   mounted() {
     this.finalBill = this.cartTotal + this.deliveryFee;
+    this.errorMessage = this.cart.length === 0 ? "No product in cart" : "";
   },
   components: {
     CartItem,
@@ -81,6 +129,14 @@ export default {
       this.$router.go(-1);
     },
     async submitOrder() {
+      if (this.cart.length == 0) {
+        this.errorMessage = "Email is missing";
+        return;
+      }
+      if (this.userEmail.length == 0) {
+        this.errorMessage = "Email is missing";
+        return;
+      }
       let payload = {
         items: this.cart.map((item) => {
           return {
@@ -91,15 +147,20 @@ export default {
         }),
         orderAmount: this.finalBill,
         userEmail: this.userEmail,
+        name: this.name,
+        address: this.address,
+        city: this.city,
+        country: this.country,
       };
 
       try {
         const response = await axios.post("http://localhost:4000/api/order", {
           order: payload,
         });
+        let data = response.data;
+        console.log("response", response, response.cart_id);
         if (response.status === 201) {
-          // Redirect to a new page
-          this.$router.push("/success");
+          this.$router.push(`/success?bookingId=${data.cart_id}`);
         } else {
           console.error("Failed to submit order.");
         }

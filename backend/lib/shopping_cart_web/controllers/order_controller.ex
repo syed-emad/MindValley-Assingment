@@ -20,9 +20,17 @@ defmodule ShoppingCartWeb.OrderController do
     end)
     userEmail = order_params["userEmail"]
     totalAmount = order_params["orderAmount"]
+    address = order_params["address"]
+    name = order_params["name"]
+    city = order_params["city"]
+    country = order_params["country"]
     cart_params = %{
       userEmail: userEmail,
-      totalAmount: totalAmount
+      totalAmount: totalAmount,
+      name: name,
+      country: country,
+      city: city,
+      address: address
     }
    {:ok, %Cart{id: cart_id}} = Carts.create_cart(cart_params)
    IO.inspect(cart_id, label: "Created Cart ID")

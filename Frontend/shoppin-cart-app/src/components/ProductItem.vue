@@ -12,7 +12,7 @@
           <div class="flex flex-col">
             <p class="text-sm font-medium text-gray-600">{{ product.name }}</p>
             <p class="text-sm font-medium text-gray-600">
-              {{ product.quantity }}
+              Quantity: {{ product.quantity }}
             </p>
           </div>
           <p class="text-sm font-medium">{{ product.price }}</p>
