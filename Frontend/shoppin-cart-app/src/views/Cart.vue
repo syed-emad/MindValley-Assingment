@@ -15,6 +15,7 @@
         <h2 class="text-lg font-medium text-gray-900">Contact Information</h2>
         <p class="block text-sm font-medium text-gray-700">Email address</p>
         <input
+          id="email"
           v-model="userEmail"
           type="email"
           placeholder="Enter your email"
@@ -23,6 +24,7 @@
         <h2 class="text-lg font-medium text-gray-900">Shipping Address</h2>
         <p class="block text-sm font-medium text-gray-700">Name</p>
         <input
+          id="name"
           v-model="name"
           type="string"
           placeholder="Enter your full name"
@@ -31,6 +33,7 @@
 
         <p class="block text-sm font-medium text-gray-700">Address</p>
         <input
+          id="address"
           v-model="address"
           type="string"
           placeholder="Enter Address"
@@ -39,6 +42,7 @@
 
         <p class="block text-sm font-medium text-gray-700">City</p>
         <input
+          id="city"
           v-model="city"
           type="string"
           placeholder="Enter City"
@@ -47,6 +51,7 @@
 
         <p class="block text-sm font-medium text-gray-700">Country</p>
         <input
+          id="country"
           v-model="country"
           type="string"
           placeholder="Enter Country"

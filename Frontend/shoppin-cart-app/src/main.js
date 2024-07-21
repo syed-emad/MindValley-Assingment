@@ -5,7 +5,7 @@ import router from "./routes/router";
 import { computed, createApp } from "vue";
 import { createStore } from "vuex";
 import App from "./App.vue";
-const store = createStore({
+export const store = createStore({
   state() {
     return {
       count: 0,

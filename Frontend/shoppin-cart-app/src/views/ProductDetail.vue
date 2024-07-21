@@ -14,10 +14,12 @@
   >
     <div class="w-full md:w-1/2 flex items-center">
       <div class="space-y-5 w-full">
-        <h1 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+        <h1 id="product" class="text-3xl font-bold text-gray-900 sm:text-4xl">
           {{ product.name }}
         </h1>
-        <p class="text-lg text-gray-900 sm:text-xl">{{ product.price }}$</p>
+        <p id="price" class="text-lg text-gray-900 sm:text-xl">
+          {{ product.price }}$
+        </p>
         <p class="text-base text-gray-500 w-2/3">
           {{ product.description }}
         </p>

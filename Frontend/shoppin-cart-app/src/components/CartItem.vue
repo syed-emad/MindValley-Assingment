@@ -4,8 +4,10 @@
       <img :src="item.image_url" class="object-contain" />
       <div class="flex flex-col">
         <p class="text-md font-medium text-gray-600">{{ item.name }}</p>
-        <p class="text-md font-medium">{{ item.price }}$</p>
-        <p class="text-md font-medium">Quantity: {{ item.orderQuantity }}</p>
+        <p id="price" class="text-md font-medium">{{ item.price }}$</p>
+        <p id="quantity" class="text-md font-medium">
+          Quantity: {{ item.orderQuantity }}
+        </p>
       </div>
     </div>
   </div>
