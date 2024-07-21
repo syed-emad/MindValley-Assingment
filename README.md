@@ -42,7 +42,7 @@ Check if Elixir is installed properly by running
 elixir -v
 ```
 
-#### Run the following commands to start Backend
+#### Run the following commands to start Frontend
 
 Install dependencies
 
