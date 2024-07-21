@@ -23,28 +23,4 @@ defmodule ShoppingCartWeb.ProductController do
     product = Products.get_product!(id)
     render(conn, :show, product: product)
   end
-
-  # def update_order(conn, %{"id" => id}) do
-  #   product = Products.get_product!(id)
-
-  #   # Assuming you have a function in your Products context to decrement quantity
-  #   with {:ok, %Product{} = updated_product} <- Products.decrement_product_quantity(product) do
-  #     render(conn, :show, product: updated_product)
-  #   end
-  # end
-
-  def order(conn, %{"id"=>id}) do
-    product = Products.get_product!(id)
-    with{:ok,%Product{}=updated_product}<- Products.order_product(product) do
-      render(conn, :show, product: updated_product)
-    end
-  end
-
-  def delete(conn, %{"id" => id}) do
-    product = Products.get_product!(id)
-
-    with {:ok, %Product{}} <- Products.delete_product(product) do
-      send_resp(conn, :no_content, "")
-    end
-  end
 end

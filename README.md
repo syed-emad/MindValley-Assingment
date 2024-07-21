@@ -1,18 +1,18 @@
-# Overview 
+# Overview
 
 ### Main Page
 
-You can click on any item to view its detai land add it to cart.
+You can click on any item to view its detail and add it to cart.
 
 ![1721586105515](image/README/1721586105515.png)
 
 ### Product Detail page
 
-Here you can see the product details and add item to cart
+You can see the product details and add item to cart
 
 ![1721586293304](image/README/1721586293304.png)
 
-When you click Add to Cart item is added to cart and message is show
+When you click **Add to Cart** , product is added to cart and message is show
 
 ![1721586339094](image/README/1721586339094.png)
 

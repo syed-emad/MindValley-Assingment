@@ -6,17 +6,11 @@ defmodule ShoppingCartWeb.OrderController do
   alias ShoppingCart.Carts
   alias ShoppingCart.Carts.Cart
   action_fallback ShoppingCartWeb.FallbackController
-
-  def index(conn, _params) do
-    orders = Orders.list_orders()
-    render(conn, :index, orders: orders)
-  end
-
   def create(conn, %{"order" => order_params}) do
     items = order_params["items"]
     # IO.inspect(items, label: "Items")
     Enum.each(items,fn product ->
-      Products.order_product2(product["product_id"],product["orderQuantity"])
+      Products.order_product(product["product_id"],product["orderQuantity"])
     end)
     userEmail = order_params["userEmail"]
     totalAmount = order_params["orderAmount"]
@@ -53,27 +47,7 @@ defmodule ShoppingCartWeb.OrderController do
         conn
         |> put_status(:created)
         |> json(response_payload)
-
-    #  userEmail: "",
-    #     orderAmount: 1212,
-    #     items: [{ orderQuantity, product_id: 1 }],
-    # product_id = order_params["product_id"]
-    # product = Products.get_product!(product_id)
-    # with {:ok, _}<- Products.order_product(product),
-    #      {:ok, %Order{} = order} <- Orders.create_order(order_params) do
-    #   conn
-    #   |> put_status(:created)
-    #   |> put_resp_header("location", ~p"/api/order")
-    #   |> render(:show, order: order)
-    # end
     orders = Orders.list_orders()
     render(conn, :index, orders: orders)
   end
-
-  def show(conn, %{"id" => id}) do
-    order = Orders.get_order!(id)
-    render(conn, :show, order: order)
-  end
-
-
 end

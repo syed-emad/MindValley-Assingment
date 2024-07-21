@@ -6,7 +6,6 @@ defmodule ShoppingCartWeb.Router do
     plug :accepts, ["json"]
   end
 
-
   scope "/api", ShoppingCartWeb do
     pipe_through :api
     get "/products", ProductController, :index
