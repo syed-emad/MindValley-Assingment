@@ -48,7 +48,11 @@
           <button
             @click="addToCart(product)"
             type="submit"
-            class="flex w-full px-8 py-3 items-center justify-center rounded-md bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700"
+            :class="{
+              'bg-indigo-600 hover:bg-indigo-700': orderQuantity > 0,
+              'bg-gray-300 cursor-not-allowed': orderQuantity === 0,
+            }"
+            class="flex w-full px-8 py-3 items-center justify-center rounded-md btext-base font-medium text-white"
           >
             Add to cart
           </button>
