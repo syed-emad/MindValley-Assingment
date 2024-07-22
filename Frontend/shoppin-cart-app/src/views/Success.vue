@@ -9,7 +9,7 @@
       <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
         Thanks for orderings
       </h1>
-      <p>
+      <p class="text-center">
         We appreciate your order, we’re currently processing it. So hang tight
         and we’ll send you confirmation very soon!
       </p>
