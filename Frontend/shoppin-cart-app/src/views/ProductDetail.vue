@@ -92,7 +92,6 @@ export default {
       }, [2000]);
     },
     fetchProduct() {
-      console.log(this.$route.params.id);
       fetch(`http://localhost:4000/api/product/${this.$route.params.id}`)
         .then((res) => res.json())
         .then((data) => (this.product = data.data))
@@ -102,6 +101,7 @@ export default {
       this.$router.go(-1);
     },
     incrementOrderQuantity() {
+      if (this.orderQuantity === this.product.quantity) return;
       this.orderQuantity++;
     },
     decrementOrderQuantity() {
