@@ -17,7 +17,7 @@
               Quantity: {{ product.quantity }}
             </p>
           </div>
-          <p id="pricing" class="text-sm font-medium">{{ product.price }}</p>
+          <p id="pricing" class="text-sm font-medium">{{ product.price }}$</p>
         </div>
       </div>
     </div>
