@@ -19,7 +19,7 @@
           v-model="userEmail"
           type="email"
           placeholder="Enter your email"
-          class="w-3/5 px-4 py-2 rounded-md border-2"
+          class="w-full md:w-3/5 px-4 py-2 rounded-md border-2"
         />
         <h2 class="text-lg font-medium text-gray-900">Shipping Address</h2>
         <p class="block text-sm font-medium text-gray-700">Name</p>
@@ -28,7 +28,7 @@
           v-model="name"
           type="string"
           placeholder="Enter your full name"
-          class="w-3/5 px-4 py-2 rounded-md border-2"
+          class="w-full md:w-3/5 px-4 py-2 rounded-md border-2"
         />
 
         <p class="block text-sm font-medium text-gray-700">Address</p>
@@ -37,7 +37,7 @@
           v-model="address"
           type="string"
           placeholder="Enter Address"
-          class="w-3/5 px-4 py-2 rounded-md border-2"
+          class="w-full md:w-3/5 px-4 py-2 rounded-md border-2"
         />
 
         <p class="block text-sm font-medium text-gray-700">City</p>
@@ -46,7 +46,7 @@
           v-model="city"
           type="string"
           placeholder="Enter City"
-          class="w-3/5 px-4 py-2 rounded-md border-2"
+          class="w-full md:w-3/5 px-4 py-2 rounded-md border-2"
         />
 
         <p class="block text-sm font-medium text-gray-700">Country</p>
@@ -55,7 +55,7 @@
           v-model="country"
           type="string"
           placeholder="Enter Country"
-          class="w-3/5 px-4 py-2 rounded-md border-2"
+          class="w-full md:w-3/5 px-4 py-2 rounded-md border-2"
         />
         <p class="text-red-500">
           {{ errorMessage }}
