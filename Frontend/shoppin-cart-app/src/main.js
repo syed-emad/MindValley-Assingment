@@ -37,11 +37,13 @@ export const store = createStore({
       return state.cart;
     },
     cartTotal: (state) => {
-      const total2 = state.cart.reduce((total, product) => {
-        const price = parseFloat(product.price);
-        console.log("price", price, product.quantity, total);
-        return total + price * product.orderQuantity;
-      }, 0);
+      const total2 = state.cart
+        .reduce((total, product) => {
+          const price = parseFloat(product.price);
+          console.log("price", price, product.quantity, total);
+          return total + price * product.orderQuantity;
+        }, 0)
+        .toFixed(2);
       console.log("total", total2);
       return total2;
     },

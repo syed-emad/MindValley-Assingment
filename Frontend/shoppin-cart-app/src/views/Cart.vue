@@ -135,11 +135,17 @@ export default {
     },
     async submitOrder() {
       if (this.cart.length == 0) {
-        this.errorMessage = "Email is missing";
+        this.errorMessage = "No Items in Cart";
         return;
       }
-      if (this.userEmail.length == 0) {
-        this.errorMessage = "Email is missing";
+      if (
+        this.userEmail.trim().length === 0 ||
+        this.address.trim().length === 0 ||
+        this.city.trim().length === 0 ||
+        this.name.trim().length === 0 ||
+        this.country.trim().length === 0
+      ) {
+        this.errorMessage = "Please fill in all fields in the form";
         return;
       }
       let payload = {
