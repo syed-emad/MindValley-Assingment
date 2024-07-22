@@ -30,6 +30,8 @@ To check if database is running you can open docker desktop or type in the follo
 docker ps
 ```
 
+![1721615035335](image/README/1721615035335.png)
+
 ### Running the Backend
 
 To run the backend please make sure you have Elixir and Erland installed in you device
@@ -70,7 +72,9 @@ Start the server
 mix phx.server
 ```
 
-server wil start on port 4000
+Server will run on port 4000
+
+![1721615055459](image/README/1721615055459.png)
 
 ### Running the Frontend
 
