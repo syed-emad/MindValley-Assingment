@@ -18,9 +18,11 @@ To run Postgress database run this command
 docker-compose up
 ```
 
-This will start a configured docker container for postgres database
+This will start a configured docker container for postgres database in detached mode
 
 **Note: You will need docker desktop to run the docker image, incase you dont have it follow the steps in the link below**
+
+https://www.docker.com/products/docker-desktop/
 
 To check if database is running you can open docker desktop or type in the follow command
 
@@ -95,3 +97,13 @@ Project will output the acceible url for example
 ```
 http://localhost:5173/
 ```
+
+#### Running Test
+
+Frontend test checks that UI elements have loaded properly in screen and actionable elements are working fine or not.
+
+```
+npm test
+```
+
+![1721613717019](image/README/1721613717019.png)
