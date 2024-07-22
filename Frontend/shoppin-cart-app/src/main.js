@@ -31,6 +31,9 @@ export const store = createStore({
       }
       console.log("state", this.cart);
     },
+    clearCart(state) {
+      state.cart = [];
+    },
   },
   getters: {
     getCartItems(state) {

@@ -171,6 +171,7 @@ export default {
         let data = response.data;
         console.log("response", response, response.cart_id);
         if (response.status === 201) {
+          this.$store.commit("clearCart");
           this.$router.push(`/success?bookingId=${data.cart_id}`);
         } else {
           console.error("Failed to submit order.");

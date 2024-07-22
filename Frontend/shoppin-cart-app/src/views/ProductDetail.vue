@@ -63,6 +63,9 @@
         >
           Item added to cart
         </p>
+        <p v-if="product.quantity === 0" class="font-semibold">
+          Sorry this product is out of stock
+        </p>
       </div>
     </div>
     <div class="w-full md:w-1/2 p-10">
