@@ -80,7 +80,7 @@
           >
             <dt class="text-base font-medium text-gray-900">Order total</dt>
             <dd class="text-base font-medium text-gray-900">
-              ${{ finalBill }}
+              ${{ cartTotal + deliveryFee }}
             </dd>
           </div>
           <button
@@ -108,7 +108,6 @@ import { errorMessages } from "vue/compiler-sfc";
 export default {
   data() {
     return {
-      finalBill: 0,
       deliveryFee: 0,
       userEmail: "",
       address: "",
@@ -119,7 +118,6 @@ export default {
     };
   },
   mounted() {
-    this.finalBill = this.cartTotal + this.deliveryFee;
     this.errorMessage = this.cart.length === 0 ? "No product in cart" : "";
   },
   components: {
@@ -156,7 +154,7 @@ export default {
             product_id: item.id,
           };
         }),
-        orderAmount: this.finalBill,
+        orderAmount: this.cartTotal + this.deliveryFee,
         userEmail: this.userEmail,
         name: this.name,
         address: this.address,

@@ -10,6 +10,10 @@
         <p id="quantity" class="text-md font-medium">
           Quantity: {{ item.orderQuantity }}
         </p>
+        <div class="flex items-center" @click="removeFromCart(item.id)">
+          <img src="../assets/delete.png" class="object-contain w-5 h-5" />
+          <p>Remove</p>
+        </div>
       </div>
     </div>
   </div>
@@ -20,6 +24,12 @@ export default {
     item: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    removeFromCart(productId) {
+      console.log(productId);
+      this.$store.commit("removeFromCart", productId);
     },
   },
 };
